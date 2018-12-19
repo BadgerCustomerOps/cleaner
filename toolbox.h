@@ -26,6 +26,7 @@ public:
 	~Toolbox();
 	void addPixels(pixel *);		//send an array of pixel data
 	void clean();					//gets some info for saving data, then taps run()
+	void quickrun();
 
 private:
 	void run();	//the big boy, iterates through the pixels and drives algorithms

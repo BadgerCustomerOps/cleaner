@@ -21,12 +21,15 @@ class Home
 public:
 	Home();
 	void run(); //runs the menus
+	void quickrun(std::string);
 
 private:
 	void startmenu();		//initial menu when no image is loaded
 	void fullmenu();		//menu with all options, only when image is loaded
 	void loadfile();		//loads a pgm
+	void loadfile(std::string);
 	void writefile();		//writes to a pgm
+	void writefile(std::string);
 	void deleteimage();		//deletes the loaded image (only within the program)
 
 	bool good;

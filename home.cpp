@@ -79,6 +79,21 @@ void Home::loadfile()
 		}
 	}
 }
+void Home::loadfile(std::string f)
+{
+	img = new Image();
+
+	f = "images/" + f;
+
+	if (img->load(f)) {
+		t = new Toolbox(img->getpixels(), img->getImageData().width, img->getImageData().totalpixels);
+		std::cout << "loaded " << f << "\n";
+	}
+	else {
+		deleteimage();
+		std::cout << "couldn't load " << f << "\n";
+	}
+}
 void Home::writefile()
 {
 	if (img != NULL)
@@ -91,6 +106,12 @@ void Home::writefile()
 	}
 	else std::cout << home_err << "no image loaded to save";
 }
+void Home::writefile(std::string f)
+{
+	if (img != NULL) {
+		img->write(f);
+	}	
+}
 void Home::deleteimage()
 {
 	if (t != NULL) {
@@ -99,4 +120,11 @@ void Home::deleteimage()
 	}
 	delete img;
 	img = NULL;
+}
+void Home::quickrun(std::string f)
+{
+	loadfile(f);
+	t->quickrun();
+	writefile(f);
+	deleteimage();
 }
