@@ -13,12 +13,16 @@ typed up some comments and created a distributable .exe
 //there's a lot of magic in these that i won't really explain
 //through comments, so just shoot me an email or something
 //if you want to know details.
-int main() 
+int main(int argc, char *argv[]) 
 {
 	std::cout << "\t\t//image processor\\\\ \n";
 	
 	Home h;
-	h.run();
+	
+	if (argc > 1)	
+		h.quickrun(argv[1]);
+	else 
+		h.run();
 
 	system("pause");
 	
