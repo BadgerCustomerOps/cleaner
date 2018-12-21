@@ -26,12 +26,12 @@ public:
 	~Toolbox();
 	void addPixels(pixel *);		//send an array of pixel data
 	void clean();					//gets some info for saving data, then taps run()
+	void quickrun();
 
 private:
 	void run();	//the big boy, iterates through the pixels and drives algorithms
 
 	void cleanSelection(const uint8_t, const int);	//cleans a selection of pixels
-	void colorbuffer(const uint8_t, const int);		//colors a selection of pixels
 	void coloredges(const uint8_t, const int);		//colors the edges of a selection of pixels
 	void printcsv(conf&);	//writes some data to a csv, if the user wants
 	

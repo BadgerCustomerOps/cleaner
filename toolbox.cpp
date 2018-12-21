@@ -31,6 +31,34 @@ void Toolbox::clean()
 		run();
 	}
 }
+void Toolbox::quickrun()
+{
+	if (pixels == NULL) return;
+
+	Selection s(pixels, imageWidth, totalPixels);
+
+	for (int i = 0; i < totalPixels; i++)
+	{
+		if (s.get(i))
+		{
+			buffer = s.getBuffer();
+
+			data[1] = buffer.size();
+			data[2] = data[1] / s.getEdges();
+			data[0] = getAverageValue(data[1]);
+
+			conf c = confidence::getconfidence(data);
+
+			if (!c.isObj)
+				cleanSelection(uint8_t(255), data[1]);
+
+			if (ofile.is_open())
+				printcsv(c);
+		}
+		s.clearBuffer();
+		buffer.clear();
+	}
+}
 void Toolbox::run()
 {
 	auto start = std::chrono::high_resolution_clock::now();
@@ -55,13 +83,15 @@ void Toolbox::run()
 		if (s.get(i))
 		{
 			buffer = s.getBuffer();
-			perimeter = s.getPerimeter();
+			//perimeter = s.getPerimeter();
 
 			data[1] = buffer.size();
 			data[2] = data[1] / s.getEdges();
 			data[0] = getAverageValue(data[1]);
 
 			conf c = confidence::getconfidence(data);
+
+			//cleanSelection(uint8_t(150), data[1]);
 
 			if (!c.isObj)
 				cleanSelection(uint8_t(255), data[1]);
@@ -93,11 +123,6 @@ void Toolbox::run()
 	std::cout << toolbox_msg << "finished in " << elapsed.count() << " nanoseconds.\n\n";
 }
 void Toolbox::cleanSelection(const uint8_t color, const int size)
-{
-	for (int i = 0; i < size; i++)
-		pixels[buffer[i]].value = color;
-}
-void Toolbox::colorbuffer(const uint8_t color, const int size)
 {
 	for (int i = 0; i < size; i++)
 		pixels[buffer[i]].value = color;

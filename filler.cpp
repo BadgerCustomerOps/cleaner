@@ -80,72 +80,72 @@ void Filler::check(pathDirection pd)
 
 	switch (pd.dir) //0 none, 1 up, 2 down, 3 left, 4 right
 	{
-		case 1: 
-		{
-			if (pd.id - width > 0) {
-				if (!p[pd.id - width].selected	&& !p[pd.id - width].found)	addtoPath(pathDirection(up, pd.id - width));	//up
-			}
-			if (pd.id % width != 0) {
-				if (!p[pd.id - 1].selected		&& !p[pd.id - 1].found)		addtoPath(pathDirection(left, pd.id - 1));		//left
-			}
-			if ((pd.id + 1) % width != 0) {
-				if (!p[pd.id + 1].selected		&& !p[pd.id + 1].found)		addtoPath(pathDirection(right, pd.id + 1));		//right
-			}
-			break;
+	case 1:
+	{
+		if (pd.id - width > 0) {
+			if (!p[pd.id - width].selected && !p[pd.id - width].found)	addtoPath(pathDirection(up, pd.id - width));	//up
 		}
-		case 2:
-		{
-			if (pd.id + width < total) {
-				if (!p[pd.id + width].selected	&& !p[pd.id + width].found)	addtoPath(pathDirection(down, pd.id + width));	//down
-			}
-			if (pd.id % width != 0) {
-				if (!p[pd.id - 1].selected		&& !p[pd.id - 1].found)		addtoPath(pathDirection(left, pd.id - 1));		//left
-			}
-			if ((pd.id + 1) % width != 0) {
-				if (!p[pd.id + 1].selected		&& !p[pd.id + 1].found)		addtoPath(pathDirection(right, pd.id + 1));		//right
-			}
-			break;
+		if (pd.id % width != 0) {
+			if (!p[pd.id - 1].selected && !p[pd.id - 1].found)		addtoPath(pathDirection(left, pd.id - 1));		//left
 		}
-		case 3:
-		{
-			if (pd.id - width > 0) {
-				if (!p[pd.id - width].selected	&& !p[pd.id - width].found)	addtoPath(pathDirection(up, pd.id - width));	//up
-			}
-			if (pd.id + width < total) {
-				if (!p[pd.id + width].selected	&& !p[pd.id + width].found)	addtoPath(pathDirection(down, pd.id + width));	//down
-			}
-			if (pd.id % width != 0) {
-				if (!p[pd.id - 1].selected		&& !p[pd.id - 1].found)		addtoPath(pathDirection(left, pd.id - 1));		//left
-			}
-			break;
+		if ((pd.id + 1) % width != 0) {
+			if (!p[pd.id + 1].selected && !p[pd.id + 1].found)		addtoPath(pathDirection(right, pd.id + 1));		//right
 		}
-		case 4:
-		{
-			if (pd.id - width > 0) {
-				if (!p[pd.id - width].selected	&& !p[pd.id - width].found)	addtoPath(pathDirection(up, pd.id - width));	//up
-			}
-			if (pd.id + width < total) {
-				if (!p[pd.id + width].selected	&& !p[pd.id + width].found)	addtoPath(pathDirection(down, pd.id + width));	//down
-			}
-			if ((pd.id + 1) % width != 0) {
-				if (!p[pd.id + 1].selected		&& !p[pd.id + 1].found)		addtoPath(pathDirection(right, pd.id + 1));		//right
-			}
+		break;
+	}
+	case 2:
+	{
+		if (pd.id + width < total) {
+			if (!p[pd.id + width].selected && !p[pd.id + width].found)	addtoPath(pathDirection(down, pd.id + width));	//down
 		}
-		case 0:
-		{
-			if (pd.id - width > 0) {
-				if (!p[pd.id - width].selected	&& !p[pd.id - width].found)	addtoPath(pathDirection(up, pd.id - width));	//up
-			}
-			if (pd.id + width < total) {
-				if (!p[pd.id + width].selected	&& !p[pd.id + width].found)	addtoPath(pathDirection(down, pd.id + width));	//down
-			}
-			if (pd.id % width != 0) {
-				if (!p[pd.id - 1].selected		&& !p[pd.id - 1].found)		addtoPath(pathDirection(left, pd.id - 1));		//left
-			}
-			if ((pd.id + 1) % width != 0) {
-				if (!p[pd.id + 1].selected		&& !p[pd.id + 1].found)		addtoPath(pathDirection(right, pd.id + 1));		//right
-			}
+		if (pd.id % width != 0) {
+			if (!p[pd.id - 1].selected && !p[pd.id - 1].found)		addtoPath(pathDirection(left, pd.id - 1));		//left
 		}
+		if ((pd.id + 1) % width != 0) {
+			if (!p[pd.id + 1].selected && !p[pd.id + 1].found)		addtoPath(pathDirection(right, pd.id + 1));		//right
+		}
+		break;
+	}
+	case 3:
+	{
+		if (pd.id - width > 0) {
+			if (!p[pd.id - width].selected && !p[pd.id - width].found)	addtoPath(pathDirection(up, pd.id - width));	//up
+		}
+		if (pd.id + width < total) {
+			if (!p[pd.id + width].selected && !p[pd.id + width].found)	addtoPath(pathDirection(down, pd.id + width));	//down
+		}
+		if (pd.id % width != 0) {
+			if (!p[pd.id - 1].selected && !p[pd.id - 1].found)		addtoPath(pathDirection(left, pd.id - 1));		//left
+		}
+		break;
+	}
+	case 4:
+	{
+		if (pd.id - width > 0) {
+			if (!p[pd.id - width].selected && !p[pd.id - width].found)	addtoPath(pathDirection(up, pd.id - width));	//up
+		}
+		if (pd.id + width < total) {
+			if (!p[pd.id + width].selected && !p[pd.id + width].found)	addtoPath(pathDirection(down, pd.id + width));	//down
+		}
+		if ((pd.id + 1) % width != 0) {
+			if (!p[pd.id + 1].selected && !p[pd.id + 1].found)		addtoPath(pathDirection(right, pd.id + 1));		//right
+		}
+	}
+	case 0:
+	{
+		if (pd.id - width > 0) {
+			if (!p[pd.id - width].selected && !p[pd.id - width].found)	addtoPath(pathDirection(up, pd.id - width));	//up
+		}
+		if (pd.id + width < total) {
+			if (!p[pd.id + width].selected && !p[pd.id + width].found)	addtoPath(pathDirection(down, pd.id + width));	//down
+		}
+		if (pd.id % width != 0) {
+			if (!p[pd.id - 1].selected && !p[pd.id - 1].found)		addtoPath(pathDirection(left, pd.id - 1));		//left
+		}
+		if ((pd.id + 1) % width != 0) {
+			if (!p[pd.id + 1].selected && !p[pd.id + 1].found)		addtoPath(pathDirection(right, pd.id + 1));		//right
+		}
+	}
 	}
 }
 void Filler::printBounds()
@@ -173,17 +173,18 @@ std::vector<pathDirection>& Filler::getPath()
 }
 void Filler::clearPath()
 {
-	for (int i = 0; i < path.size(); i++) 
+	for (int i = 0; i < path.size(); i++)
 	{
-		if (p[path[i].id].value <= uint8_t(255)) {
+		if (p[path[i].id].value == uint8_t(255)) {
 			p[path[i].id].selected = false;
 		}
 		else {
+			//std::cout << "poop\n";
 			p[path[i].id].found = true;
 			foundBuffer.push_back(path[i].id);
 		}
 	}
-	
+
 	path.clear();
 	pathSize = 0;
 }
